@@ -79,7 +79,7 @@ const About = () => {
     const research = [
         {
             title: 'Microservices Architecture',
-            description: 'Research and implementation of scalable microservices using Spring Boot and AWS',
+            description: 'Research and implementation of scalable microservices using Spring Boot and AWS.',
             level: 5,
             image: '/lab-microservices.png'
         },
