@@ -175,10 +175,10 @@ const Hero: NextPage = () => {
                                         className="overflow-hidden"
                                     >
                                         <OutputLine delay={1.1}>
-                                            <span className="text-emerald-400/80">{">"}</span> from <span className="text-white">top 100 Clash of Clans</span> to <span className="text-white">top-tier tech</span>
+                                            <span className="text-emerald-400/80">{">"}</span> into startups, business, tech and shitposting
                                         </OutputLine>
                                         <OutputLine delay={1.2}>
-                                            <span className="text-emerald-400/80">{">"}</span> I raid servers like I raid bases
+                                            <span className="text-emerald-400/80">{">"}</span> I raid servers like I raid COC bases
                                         </OutputLine>
                                         <OutputLine delay={1.3}>
                                             <span className="text-emerald-400/80">{">"}</span> if it can be imagined, <span className="text-white/90">I can probably build it</span>
@@ -211,7 +211,7 @@ const Hero: NextPage = () => {
                                             }}
                                             className="inline-block"
                                         >
-                                            this mf can build anything
+                                            this mf can do anything and everything
                                         </motion.span>
                                     </motion.div>
                                 </motion.div>
