@@ -28,131 +28,246 @@ const TypewriterText = ({ text }: { text: string }) => {
     );
 };
 
+const MatrixText = ({ text }: { text: string }) => {
+    const [scrambled, setScrambled] = useState(text);
+
+    useEffect(() => {
+        const chars = '01';
+        let interval = setInterval(() => {
+            setScrambled(prev =>
+                prev.split('').map((char, i) =>
+                    Math.random() > 0.8 ? chars[Math.floor(Math.random() * chars.length)] : text[i]
+                ).join('')
+            );
+        }, 50);
+
+        return () => clearInterval(interval);
+    }, [text]);
+
+    return <span className="text-green-400/30 font-mono">{scrambled}</span>;
+};
+
+const CommandLine = ({ children, delay }: { children: React.ReactNode; delay: number }) => (
+    <motion.p
+        initial={{ opacity: 0, x: -10 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay, duration: 0.3 }}
+        className="text-gray-400"
+    >
+        <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.5, 1] }}
+            transition={{ delay, duration: 0.2, repeat: Infinity, repeatType: "reverse" }}
+            className="text-white/50"
+        >
+            $
+        </motion.span>
+        {" "}{children}
+    </motion.p>
+);
+
+const OutputLine = ({ children, delay }: { children: React.ReactNode; delay: number }) => (
+    <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay, duration: 0.3 }}
+        className="text-gray-400 pl-2 py-1"
+    >
+        {children}
+    </motion.p>
+);
+
 const Hero: NextPage = () => {
     return (
         <>
             <Background />
-            <section className="relative min-h-screen flex items-center justify-center bg-transparent text-white px-4 py-8 sm:p-4">
-                <div className="w-full max-w-2xl mx-auto">
+            <section className="relative min-h-[100dvh] flex items-center justify-center bg-transparent text-white px-3 py-6 sm:px-4 sm:py-8">
+                <div className="w-full max-w-xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
-                        className="space-y-6"
+                        className="space-y-4 sm:space-y-6"
                     >
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
-                            className="mb-6 space-y-1"
+                            className="p-3 sm:p-4 bg-white/5 rounded-lg border border-white/10 backdrop-blur-sm"
+                            whileHover={{ boxShadow: "0 0 20px rgba(255,255,255,0.05)" }}
                         >
-                            <motion.p
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.2 }}
-                                className="text-gray-400 text-sm font-mono"
-                            >
-                                {'>'} hello world_
-                            </motion.p>
-                            <motion.h1
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.4 }}
-                                className="text-2xl sm:text-4xl font-mono font-bold tracking-wider break-words"
-                            >
-                                <TypewriterText text="MOHD ZAID" />
-                            </motion.h1>
-                            <motion.p
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.6 }}
-                                className="text-gray-400 text-sm font-mono"
-                            >
-                                Engineering Reality from Ideas ⚡
-                            </motion.p>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.8 }}
-                            className="space-y-4 text-gray-400"
-                        >
-                            <p className="text-sm sm:text-base leading-relaxed">
-                                I live where imagination meets execution. Every project is a chance to turn 
-                                <span className="text-white"> bold ideas</span> into 
-                                <span className="text-white"> reality</span>. No shortcuts, just pure 
-                                engineering craftsmanship.
-                            </p>
-                            <p className="text-sm sm:text-base leading-relaxed">
-                                Whether it's scaling on <span className="text-white">AWS</span>, building with 
-                                <span className="text-white"> AI</span>, or diving into uncharted tech — 
-                                I'm in my element. Because great software isn't just about code, 
-                                it's about pushing boundaries. 
-                            </p>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1 }}
-                            className="flex flex-col sm:flex-row items-center gap-3 mt-8 font-mono"
-                        >
-                            <motion.div
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="w-full sm:w-auto"
-                            >
-                                <Link
-                                    href="/contact"
-                                    className="block w-full bg-white/5 hover:bg-white/10 px-6 py-3 rounded-lg transition-all duration-300 text-xs sm:text-sm text-center backdrop-blur-sm border border-white/10"
-                                >
-                                    Start a Project
-                                </Link>
-                            </motion.div>
-                            <motion.div
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="w-full sm:w-auto"
-                            >
-                                <Link
-                                    href="mailto:mohdzaid.work@gmail.com"
-                                    className="block w-full bg-white/5 hover:bg-white/10 px-6 py-3 rounded-lg transition-all duration-300 text-xs sm:text-sm text-center backdrop-blur-sm border border-white/10"
-                                >
-                                    Get in Touch
-                                </Link>
-                            </motion.div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 1.2 }}
-                            className="pt-8 text-center"
-                        >
-                            <motion.div
-                                animate={{ y: [0, 8, 0] }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }}
-                                className="inline-block text-gray-400"
-                            >
-                                <svg 
-                                    width="16" 
-                                    height="16" 
-                                    viewBox="0 0 20 20" 
-                                    fill="none" 
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="opacity-50"
-                                >
-                                    <path 
-                                        d="M10 15L4 9L5.4 7.6L10 12.2L14.6 7.6L16 9L10 15Z" 
-                                        fill="currentColor"
+                            {/* Terminal header */}
+                            <div className="flex items-center gap-2 mb-3 sm:mb-4 pb-2 border-b border-white/10">
+                                <span className="flex gap-1.5">
+                                    <motion.span
+                                        className="h-2 w-2 rounded-full bg-red-500/50"
+                                        whileHover={{ scale: 1.2, opacity: 0.8 }}
                                     />
-                                </svg>
-                            </motion.div>
+                                    <motion.span
+                                        className="h-2 w-2 rounded-full bg-yellow-500/50"
+                                        whileHover={{ scale: 1.2, opacity: 0.8 }}
+                                    />
+                                    <motion.span
+                                        className="h-2 w-2 rounded-full bg-green-500/50"
+                                        whileHover={{ scale: 1.2, opacity: 0.8 }}
+                                    />
+                                </span>
+                                <motion.span
+                                    className="text-[10px] sm:text-xs text-white/30 font-mono"
+                                    whileHover={{ opacity: 0.5 }}
+                                >
+                                    ~/zaid
+                                </motion.span>
+                            </div>
+
+                            {/* Terminal content */}
+                            <div className="font-mono text-xs sm:text-sm space-y-2">
+                                <CommandLine delay={0.2}>whoami</CommandLine>
+
+                                <motion.p
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.4 }}
+                                    className="text-lg sm:text-xl font-bold tracking-wide"
+                                >
+                                    <TypewriterText text="ZAID" />
+                                </motion.p>
+
+                                <motion.p
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.6 }}
+                                    className="text-gray-400 pb-2"
+                                >
+                                    <motion.span
+                                        animate={{ opacity: [1, 0.7, 1] }}
+                                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                                    >
+                                        Engineering Reality from Ideas
+                                    </motion.span>
+                                    <motion.span
+                                        animate={{
+                                            scale: [1, 1.2, 1],
+                                            rotate: [0, 5, 0]
+                                        }}
+                                        transition={{
+                                            duration: 2,
+                                            repeat: Infinity,
+                                            ease: "easeInOut"
+                                        }}
+                                        className="inline-block ml-1"
+                                    >
+                                        ⚡
+                                    </motion.span>
+                                </motion.p>
+
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.8 }}
+                                    className="pt-2 border-t border-white/5"
+                                >
+                                    <CommandLine delay={0.9}>cat about.txt</CommandLine>
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        transition={{ delay: 1, duration: 0.5 }}
+                                        className="overflow-hidden"
+                                    >
+                                        <OutputLine delay={1.1}>
+                                            <span className="text-emerald-400/80">{">"}</span> from <span className="text-white">top 100 Clash of Clans</span> to <span className="text-white">top-tier tech</span>
+                                        </OutputLine>
+                                        <OutputLine delay={1.2}>
+                                            <span className="text-emerald-400/80">{">"}</span> I raid servers like I raid bases
+                                        </OutputLine>
+                                        <OutputLine delay={1.3}>
+                                            <span className="text-emerald-400/80">{">"}</span> if it can be imagined, <span className="text-white/90">I can probably build it</span>
+                                        </OutputLine>
+                                    </motion.div>
+                                </motion.div>
+
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 1.4 }}
+                                    className="pt-2 border-t border-white/5"
+                                >
+                                    <CommandLine delay={1.5}>ls skills/</CommandLine>
+                                    <motion.div
+                                        initial={{ x: -10, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: 1.6, duration: 0.3 }}
+                                        className="pl-2 text-gray-400"
+                                    >
+                                        <motion.span
+                                            animate={{
+                                                opacity: [0.7, 1],
+                                                x: [0, 1, 0]
+                                            }}
+                                            transition={{
+                                                duration: 3,
+                                                repeat: Infinity,
+                                                ease: "easeInOut"
+                                            }}
+                                            className="inline-block"
+                                        >
+                                            this mf can build anything
+                                        </motion.span>
+                                    </motion.div>
+                                </motion.div>
+
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 1.7 }}
+                                    className="pt-2 border-t border-white/5"
+                                >
+                                    <CommandLine delay={1.8}>contact</CommandLine>
+                                    <motion.div
+                                        initial={{ y: -10, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        transition={{ delay: 1.9 }}
+                                        className="pl-2 flex flex-col sm:flex-row gap-2 sm:gap-3 pt-1"
+                                    >
+                                        <Link
+                                            href="/contact"
+                                            className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-0.5"
+                                        >
+                                            [1] Start a Project
+                                        </Link>
+                                        <Link
+                                            href="mailto:mohdzaid.work@gmail.com"
+                                            className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-0.5"
+                                        >
+                                            [2] Get in Touch
+                                        </Link>
+                                    </motion.div>
+                                </motion.div>
+
+                                {/* Improved cursor animation */}
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 2 }}
+                                    className="pt-2"
+                                >
+                                    <motion.span
+                                        animate={{
+                                            opacity: [1, 0],
+                                            x: [0, 0.5, 0]
+                                        }}
+                                        transition={{
+                                            duration: 1,
+                                            repeat: Infinity,
+                                            repeatType: "reverse",
+                                            ease: "easeInOut"
+                                        }}
+                                        className="text-white/50 text-xs"
+                                    >
+                                        ▋
+                                    </motion.span>
+                                </motion.div>
+                            </div>
                         </motion.div>
                     </motion.div>
                 </div>
