@@ -81,13 +81,13 @@ const Hero: NextPage = () => {
     return (
         <>
             <Background />
-            <section className="relative min-h-[100dvh] flex items-center justify-center bg-transparent text-white px-3 py-6 sm:px-4 sm:py-8">
+            <section className="relative flex items-center justify-center bg-transparent text-white px-3 py-12 sm:py-16">
                 <div className="w-full max-w-xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
-                        className="space-y-4 sm:space-y-6"
+                        className="space-y-3 sm:space-y-4"
                     >
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
