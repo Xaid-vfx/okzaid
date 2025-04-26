@@ -230,16 +230,10 @@ const Hero: NextPage = () => {
                                         className="pl-2 flex flex-col sm:flex-row gap-2 sm:gap-3 pt-1"
                                     >
                                         <Link
-                                            href="/contact"
-                                            className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-0.5"
-                                        >
-                                            [1] Start a Project
-                                        </Link>
-                                        <Link
                                             href="mailto:mohdzaid.work@gmail.com"
                                             className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-0.5"
                                         >
-                                            [2] Get in Touch
+                                            [1] Get in Touch
                                         </Link>
                                     </motion.div>
                                 </motion.div>

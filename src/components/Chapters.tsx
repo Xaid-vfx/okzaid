@@ -124,9 +124,25 @@ const Chapters = () => {
                                                     href={chapter.link}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="text-xs font-mono px-2 py-1 bg-white/10 text-gray-400 hover:text-white hover:bg-white/20 rounded transition-all duration-200"
+                                                    className="text-xs font-mono px-2 py-1 bg-white/10 text-gray-400 hover:text-white hover:bg-white/20 rounded transition-all duration-200 flex items-center gap-1"
                                                 >
                                                     Visit
+                                                    <svg
+                                                        width="14"
+                                                        height="14"
+                                                        viewBox="0 0 20 20"
+                                                        fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        className="inline-block"
+                                                    >
+                                                        <path
+                                                            d="M7 13L13 7M13 7H8M13 7V12"
+                                                            stroke="currentColor"
+                                                            strokeWidth="1.5"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                        />
+                                                    </svg>
                                                 </a>
                                             ) : null}
                                         </div>
