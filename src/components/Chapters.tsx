@@ -48,14 +48,14 @@ const Chapters = () => {
     }, []);
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center bg-transparent text-white px-4 sm:px-6 py-12 sm:py-24 overflow-hidden">
-            <div className="w-full max-w-5xl mx-auto relative">
+        <section className="relative flex items-center justify-center bg-transparent text-white px-3 py-8 sm:px-6 sm:py-16">
+            <div className="w-full max-w-5xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
-                    className="space-y-8 sm:space-y-12"
+                    className="space-y-4 sm:space-y-8"
                 >
                     <div ref={headingRef} className="space-y-1 text-center mb-12 sm:mb-16 relative">
                         <motion.p
@@ -79,297 +79,75 @@ const Chapters = () => {
                     </div>
 
                     <div className="relative">
-
-
-                        <div className="space-y-4 sm:space-y-2 relative z-10">
-                            {/* Full Stack Engineer */}
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.5 }}
-                                viewport={{ once: true }}
-                                className="relative group"
-                            >
-                                <div className="grid grid-cols-12 gap-4 sm:gap-6 items-start group-hover:bg-white/5 p-6 sm:p-8 rounded-lg transition-all duration-300">
-                                    <div className="col-span-12 sm:col-span-2">
-                                        <motion.p
-                                            initial={{ opacity: 0 }}
-                                            whileInView={{ opacity: 1 }}
-                                            transition={{ delay: 0.3 }}
-                                            viewport={{ once: true }}
-                                            className="text-gray-400 font-mono text-sm whitespace-nowrap"
-                                        >
-                                            Sept &apos;24 →
-                                        </motion.p>
+                        <div className="space-y-6 sm:space-y-8 relative z-10">
+                            {/* Example for each chapter card */}
+                            {[
+                                {
+                                    date: "Sept '24 →",
+                                    title: "Full Stack Engineer",
+                                    org: "IG Group",
+                                    skills: ["Java", "Spring Boot", "Kafka", "AWS", "Terraform", "Nomad", "React", "TypeScript"],
+                                },
+                                {
+                                    date: "'23 →",
+                                    title: "Co-founder",
+                                    org: "Bloom",
+                                    skills: ["Next.js", "TypeScript", "PostgreSQL", "React", "Docker", "Supabase", "Tailwind", "Paystack"],
+                                    link: "https://bloom.africa",
+                                },
+                            ].map((chapter, idx) => (
+                                <motion.div
+                                    key={chapter.title}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                    viewport={{ once: true }}
+                                    className="bg-white/5 border border-white/10 rounded-lg backdrop-blur-sm p-3 sm:p-6"
+                                >
+                                    {/* Terminal header */}
+                                    <div className="flex items-center gap-1.5 px-2 sm:px-3 py-2 border-b border-white/10">
+                                        <span className="flex gap-1">
+                                            <span className="h-2 w-2 rounded-full bg-red-500/50" />
+                                            <span className="h-2 w-2 rounded-full bg-yellow-500/50" />
+                                            <span className="h-2 w-2 rounded-full bg-green-500/50" />
+                                        </span>
+                                        <span className="text-[10px] sm:text-xs text-white/30 font-mono ml-1">
+                                            ~/chapters/{chapter.title.toLowerCase().replace(/\s/g, '-')}
+                                        </span>
                                     </div>
-
-                                    <div className="col-span-12 sm:col-span-10">
-                                        <div className="space-y-4">
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                whileInView={{ opacity: 1 }}
-                                                transition={{ delay: 0.4 }}
-                                                viewport={{ once: true }}
-                                            >
-                                                <h3 className="text-white font-medium text-lg">Full Stack Engineer</h3>
-                                                <p className="text-gray-400 text-sm">IG Group</p>
-                                            </motion.div>
-
-                                            <motion.div
-                                                className="flex flex-wrap gap-2"
-                                                initial={{ opacity: 0 }}
-                                                whileInView={{ opacity: 1 }}
-                                                transition={{ delay: 0.5 }}
-                                                viewport={{ once: true }}
-                                            >
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Java
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Spring Boot
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Kafka
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    AWS
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Terraform
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Nomad
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    React
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    TypeScript
-                                                </span>
-                                            </motion.div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-
-                            {/* Co-founder */}
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.5 }}
-                                viewport={{ once: true }}
-                                className="relative group"
-                            >
-                                <div className="grid grid-cols-12 gap-4 sm:gap-6 items-start group-hover:bg-white/5 p-6 sm:p-8 rounded-lg transition-all duration-300">
-                                    <div className="col-span-12 sm:col-span-2">
-                                        <motion.p
-                                            initial={{ opacity: 0 }}
-                                            whileInView={{ opacity: 1 }}
-                                            transition={{ delay: 0.3 }}
-                                            viewport={{ once: true }}
-                                            className="text-gray-400 font-mono text-sm whitespace-nowrap"
-                                        >
-                                            &apos;23 →
-                                        </motion.p>
-                                    </div>
-
-                                    <div className="col-span-12 sm:col-span-10">
-                                        <div className="space-y-4">
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                whileInView={{ opacity: 1 }}
-                                                transition={{ delay: 0.4 }}
-                                                viewport={{ once: true }}
-                                                className="flex flex-col sm:flex-row sm:items-center justify-between gap-2"
-                                            >
-                                                <div>
-                                                    <h3 className="text-white font-medium text-lg">Co-founder</h3>
-                                                    <p className="text-gray-400 text-sm">Bloom</p>
-                                                </div>
-                                                <motion.a
-                                                    href="https://bloom.africa"
+                                    {/* Terminal content */}
+                                    <div className="px-2 sm:px-3 py-3 sm:py-4 font-mono text-xs sm:text-sm space-y-2">
+                                        <div className="flex flex-col items-start sm:flex-row sm:items-center justify-between gap-1">
+                                            <span className="text-gray-400 font-mono text-xs whitespace-nowrap">{chapter.date}</span>
+                                            {chapter.link ? (
+                                                <a
+                                                    href={chapter.link}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="text-xs font-mono px-3 py-1.5 bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 flex items-center gap-1.5 w-fit group/visit"
-                                                    whileHover={{ scale: 1.05 }}
-                                                    whileTap={{ scale: 0.95 }}
+                                                    className="text-xs font-mono px-2 py-1 bg-white/10 text-gray-400 hover:text-white hover:bg-white/20 rounded transition-all duration-200"
                                                 >
                                                     Visit
-                                                    <svg
-                                                        width="12"
-                                                        height="12"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        strokeWidth="2"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        className="opacity-50 group-hover/visit:translate-x-0.5 transition-transform duration-200"
-                                                    >
-                                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                                        <polyline points="15 3 21 3 21 9" />
-                                                        <line x1="10" y1="14" x2="21" y2="3" />
-                                                    </svg>
-                                                </motion.a>
-                                            </motion.div>
-
-                                            <motion.div
-                                                className="flex flex-wrap gap-2"
-                                                initial={{ opacity: 0 }}
-                                                whileInView={{ opacity: 1 }}
-                                                transition={{ delay: 0.5 }}
-                                                viewport={{ once: true }}
-                                            >
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Next.js
+                                                </a>
+                                            ) : null}
+                                        </div>
+                                        <div>
+                                            <span className="text-white font-medium text-base sm:text-lg">{chapter.title}</span>
+                                            <span className="ml-2 text-gray-400 text-xs">{chapter.org}</span>
+                                        </div>
+                                        <div className="flex flex-wrap gap-2 pt-1">
+                                            {chapter.skills.map(skill => (
+                                                <span
+                                                    key={skill}
+                                                    className="text-[10px] sm:text-xs font-mono px-2 py-1 bg-white/10 text-gray-400 rounded hover:bg-white/20 hover:text-white transition-all duration-200"
+                                                >
+                                                    {skill}
                                                 </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    TypeScript
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    PostgreSQL
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    React
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Docker
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Supabase
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Tailwind
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Paystack
-                                                </span>
-                                            </motion.div>
+                                            ))}
                                         </div>
                                     </div>
-                                </div>
-                            </motion.div>
-
-                            {/* Software Engineer Intern */}
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.5 }}
-                                viewport={{ once: true }}
-                                className="relative group"
-                            >
-                                <div className="grid grid-cols-12 gap-4 sm:gap-6 items-start group-hover:bg-white/5 p-6 sm:p-8 rounded-lg transition-all duration-300">
-                                    <div className="col-span-12 sm:col-span-2">
-                                        <motion.p
-                                            initial={{ opacity: 0 }}
-                                            whileInView={{ opacity: 1 }}
-                                            transition={{ delay: 0.3 }}
-                                            viewport={{ once: true }}
-                                            className="text-gray-400 font-mono text-sm whitespace-nowrap"
-                                        >
-                                            &apos;23 →
-                                        </motion.p>
-                                    </div>
-
-                                    <div className="col-span-12 sm:col-span-10">
-                                        <div className="space-y-4">
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                whileInView={{ opacity: 1 }}
-                                                transition={{ delay: 0.4 }}
-                                                viewport={{ once: true }}
-                                            >
-                                                <h3 className="text-white font-medium text-lg">Software Engineer Intern</h3>
-                                                <p className="text-gray-400 text-sm">Graviti</p>
-                                            </motion.div>
-
-                                            <motion.div
-                                                className="flex flex-wrap gap-2"
-                                                initial={{ opacity: 0 }}
-                                                whileInView={{ opacity: 1 }}
-                                                transition={{ delay: 0.5 }}
-                                                viewport={{ once: true }}
-                                            >
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Next.js
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    React
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    TypeScript
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    CSS
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Node.js
-                                                </span>
-                                            </motion.div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-
-                            {/* Open Source Contributor */}
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.5 }}
-                                viewport={{ once: true }}
-                                className="relative group"
-                            >
-                                <div className="grid grid-cols-12 gap-4 sm:gap-6 items-start group-hover:bg-white/5 p-6 sm:p-8 rounded-lg transition-all duration-300">
-                                    <div className="col-span-12 sm:col-span-2">
-                                        <motion.p
-                                            initial={{ opacity: 0 }}
-                                            whileInView={{ opacity: 1 }}
-                                            transition={{ delay: 0.3 }}
-                                            viewport={{ once: true }}
-                                            className="text-gray-400 font-mono text-sm whitespace-nowrap"
-                                        >
-                                            &apos;22 →
-                                        </motion.p>
-                                    </div>
-
-                                    <div className="col-span-12 sm:col-span-10">
-                                        <div className="space-y-4">
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                whileInView={{ opacity: 1 }}
-                                                transition={{ delay: 0.4 }}
-                                                viewport={{ once: true }}
-                                            >
-                                                <h3 className="text-white font-medium text-lg">Open Source Contributor</h3>
-                                                <p className="text-gray-400 text-sm">Creative Commons</p>
-                                            </motion.div>
-
-                                            <motion.div
-                                                className="flex flex-wrap gap-2"
-                                                initial={{ opacity: 0 }}
-                                                whileInView={{ opacity: 1 }}
-                                                transition={{ delay: 0.5 }}
-                                                viewport={{ once: true }}
-                                            >
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    Docker
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    JavaScript
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    HTML
-                                                </span>
-                                                <span className="text-xs font-mono px-2 py-1 bg-white/5 text-gray-400 rounded hover:bg-white/10 hover:text-white transition-all duration-200">
-                                                    CSS
-                                                </span>
-                                            </motion.div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-
-                            <div className="text-gray-400 text-sm font-mono text-center">and many more ..</div>
+                                </motion.div>
+                            ))}
+                            <div className="text-gray-400 text-xs sm:text-sm font-mono text-center pt-2">and many more ..</div>
                         </div>
                     </div>
                 </motion.div>

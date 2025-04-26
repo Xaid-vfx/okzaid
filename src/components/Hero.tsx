@@ -81,19 +81,19 @@ const Hero: NextPage = () => {
     return (
         <>
             <Background />
-            <section className="relative flex items-center justify-center bg-transparent text-white px-3 py-12 sm:py-16">
+            <section className="relative flex items-center justify-center bg-transparent text-white px-3 py-8 sm:px-6 sm:py-16">
                 <div className="w-full max-w-xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
-                        className="space-y-3 sm:space-y-4"
+                        className="space-y-4 sm:space-y-8"
                     >
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
-                            className="p-3 sm:p-4 bg-white/5 rounded-lg border border-white/10 backdrop-blur-sm"
+                            className="p-3 sm:p-6 bg-white/5 rounded-lg border border-white/10 backdrop-blur-sm"
                             whileHover={{ boxShadow: "0 0 20px rgba(255,255,255,0.05)" }}
                         >
                             {/* Terminal header */}
