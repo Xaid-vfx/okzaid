@@ -235,6 +235,12 @@ const Hero: NextPage = () => {
                                         >
                                             [1] Get in Touch
                                         </Link>
+                                        <Link
+                                            href="/projects"
+                                            className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-0.5"
+                                        >
+                                            [2] View Projects
+                                        </Link>
                                     </motion.div>
                                 </motion.div>
 
