@@ -81,60 +81,115 @@ export default function Projects() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
-                <Link 
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  <motion.div
-                    whileHover={{ 
-                      x: 2,
-                      transition: { duration: 0.2 }
-                    }}
+                {project.slug === 'neploy' ? (
+                  <Link 
+                    href={`/projects/${project.slug}`}
+                    className="group relative block"
                   >
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <h2 className="text-2xl font-extralight tracking-tight">
-                          {project.title}
-                        </h2>
-                        {project.date && (
-                          <span className="text-[11px] tracking-wider text-white/40">
-                            {project.date}
-                          </span>
-                        )}
-                      </div>
-                      <svg 
-                        width="18" 
-                        height="18" 
-                        viewBox="0 0 24 24" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="1.5"
-                        className="text-white/40 group-hover:text-white transition-colors"
-                      >
-                        <path d="M7 7h10v10M7 17V7h10"/>
-                      </svg>
-                    </div>
-                    
-                    <p className="text-white/60 font-extralight leading-relaxed mb-3 tracking-wide text-sm">
-                      {project.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-[11px] tracking-[0.2em] uppercase text-white/40 font-light group-hover:text-white/60 transition-colors"
+                    <motion.div
+                      whileHover={{ 
+                        x: 2,
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      <div className="flex items-start justify-between mb-2">
+                        <div>
+                          <h2 className="text-2xl font-extralight tracking-tight">
+                            {project.title}
+                          </h2>
+                          {project.date && (
+                            <span className="text-[11px] tracking-wider text-white/40">
+                              {project.date}
+                            </span>
+                          )}
+                        </div>
+                        <svg 
+                          width="18" 
+                          height="18" 
+                          viewBox="0 0 24 24" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="1.5"
+                          className="text-white/40 group-hover:text-white transition-colors"
                         >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                          <path d="M7 7h10v10M7 17V7h10"/>
+                        </svg>
+                      </div>
+                      
+                      <p className="text-white/60 font-extralight leading-relaxed mb-3 tracking-wide text-sm">
+                        {project.description}
+                      </p>
 
-                    <div className="h-px bg-white/10 mt-4 group-hover:bg-white/20 transition-colors" />
-                  </motion.div>
-                </Link>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="text-[11px] tracking-[0.2em] uppercase text-white/40 font-light group-hover:text-white/60 transition-colors"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="h-px bg-white/10 mt-4 group-hover:bg-white/20 transition-colors" />
+                    </motion.div>
+                  </Link>
+                ) : (
+                  <a 
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative block"
+                  >
+                    <motion.div
+                      whileHover={{ 
+                        x: 2,
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      <div className="flex items-start justify-between mb-2">
+                        <div>
+                          <h2 className="text-2xl font-extralight tracking-tight">
+                            {project.title}
+                          </h2>
+                          {project.date && (
+                            <span className="text-[11px] tracking-wider text-white/40">
+                              {project.date}
+                            </span>
+                          )}
+                        </div>
+                        <svg 
+                          width="18" 
+                          height="18" 
+                          viewBox="0 0 24 24" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="1.5"
+                          className="text-white/40 group-hover:text-white transition-colors"
+                        >
+                          <path d="M7 7h10v10M7 17V7h10"/>
+                        </svg>
+                      </div>
+                      
+                      <p className="text-white/60 font-extralight leading-relaxed mb-3 tracking-wide text-sm">
+                        {project.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="text-[11px] tracking-[0.2em] uppercase text-white/40 font-light group-hover:text-white/60 transition-colors"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="h-px bg-white/10 mt-4 group-hover:bg-white/20 transition-colors" />
+                    </motion.div>
+                  </a>
+                )}
               </motion.div>
             ))}
           </div>
