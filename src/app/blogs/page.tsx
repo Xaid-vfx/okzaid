@@ -14,9 +14,9 @@ export default function BlogsPage() {
         <AnimatePresence>
             {!leaving && (
                 <motion.section
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -24 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.28 }}
                     className="max-w-2xl mx-auto py-12 px-4"
                 >
@@ -25,8 +25,8 @@ export default function BlogsPage() {
                         {blogs.map((blog, i) => (
                             <motion.li
                                 key={blog.slug}
-                                initial={{ opacity: 0, y: 24 }}
-                                animate={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
                                 transition={{ delay: 0.06 * i, duration: 0.28 }}
                                 className="bg-white/5 border border-white/10 rounded-lg p-4 hover:bg-white/10 transition cursor-pointer"
                                 onClick={async () => {

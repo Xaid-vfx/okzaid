@@ -131,9 +131,9 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         <AnimatePresence>
             {!leaving && (
                 <motion.main
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -24 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.28 }}
                     className="relative min-h-screen bg-gray-900/80 font-sans"
                 >
