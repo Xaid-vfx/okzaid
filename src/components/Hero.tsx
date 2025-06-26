@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Background from './Background';
 import { useEffect, useState } from 'react';
+import { notFound } from 'next/navigation';
 
 const TypewriterText = ({ text }: { text: string }) => {
     const [displayText, setDisplayText] = useState('');
