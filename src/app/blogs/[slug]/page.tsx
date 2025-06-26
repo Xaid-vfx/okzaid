@@ -138,7 +138,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                     className="relative min-h-screen bg-gray-900/80 font-sans"
                 >
                     <Background />
-                    <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+                    <div className="mx-auto max-w-3xl px-2 sm:px-4 lg:px-8 py-8 sm:py-16 md:py-24">
                         <div className="mb-8">
                             <span
                                 className="group flex items-center gap-2 text-sm font-medium text-gray-300 hover:text-white transition-colors cursor-pointer"
@@ -151,19 +151,19 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                                 Back to Blog
                             </span>
                         </div>
-                        <div className="rounded-2xl bg-gray-900/70 p-6 sm:p-10 backdrop-blur-lg border border-white/5 shadow-2xl shadow-black/20">
+                        <div className="rounded-2xl bg-gray-900/70 p-3 sm:p-6 md:p-10 backdrop-blur-lg border border-white/5 shadow-2xl shadow-black/20">
                             <header className="text-center mb-12">
-                                <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight text-shadow-lg shadow-black/20">
+                                <h1 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-white tracking-tight text-shadow-lg shadow-black/20">
                                     {post.title}
                                 </h1>
-                                <time dateTime={post.date} className="mt-4 block text-sm text-gray-400">
+                                <time dateTime={post.date} className="mt-4 block text-xs sm:text-sm text-gray-400">
                                     {post.date}
                                 </time>
                             </header>
                             <article className="prose prose-invert max-w-none whitespace-pre-line">
                                 <ReactMarkdown
                                     components={{
-                                        p: (props) => <p className="font-serif text-lg sm:text-xl leading-loose mb-6">{props.children}</p>
+                                        p: (props) => <p className="font-serif text-base sm:text-lg md:text-xl leading-loose mb-6">{props.children}</p>
                                     }}
                                 >{post.content}</ReactMarkdown>
                             </article>
