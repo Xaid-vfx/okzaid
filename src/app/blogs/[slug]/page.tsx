@@ -167,6 +167,11 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                                     }}
                                 >{post.content}</ReactMarkdown>
                             </article>
+                            <footer className="mt-12 pt-8 border-t border-white/10 text-center">
+                                <div className="flex flex-col gap-2">
+                                    <span className="font-semibold text-white text-base text-left">- Zaid</span>
+                                </div>
+                            </footer>
                         </div>
                     </div>
                 </motion.main>
