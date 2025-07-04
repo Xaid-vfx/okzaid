@@ -4,7 +4,9 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const blogs = [
-    { slug: 'the-art-of-letting-go', title: 'The Art of Letting Go', summary: 'A poetic meditation on loss, impermanence, and the art of saying goodbye.' },
+    { slug: 'purpose-vs-absurdity', title: 'Purpose vs Absurdity', summary: 'Can you find purpose in absurdity?' },
+    { slug: 'poke-life', title: 'Poke Life', summary: 'Life can be much broader.' },
+    { slug: 'the-art-of-letting-go', title: 'The Art of Letting Go', summary: 'What exactly is life?' },
 ];
 
 export default function BlogsPage() {
@@ -28,16 +30,18 @@ export default function BlogsPage() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.06 * i, duration: 0.28 }}
-                                className="bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 hover:bg-white/10 transition cursor-pointer"
+                                className="bg-transparent p-0 cursor-pointer group text-left"
                                 onClick={async () => {
                                     setLeaving(true);
                                     setTimeout(() => router.push(`/blogs/${blog.slug}`), 400);
                                 }}
                             >
-                                <span className="text-base sm:text-lg font-mono text-emerald-400 hover:underline">
+                                <span className="text-base sm:text-lg font-mono text-neutral-100 group-hover:text-emerald-400 group-hover:underline transition-colors">
                                     {blog.title}
                                 </span>
-                                <p className="text-gray-400 text-xs sm:text-sm mt-1 font-mono">{blog.summary}</p>
+                                <p className="text-neutral-400 text-xs sm:text-sm mt-1 font-mono">
+                                    {blog.summary}
+                                </p>
                             </motion.li>
                         ))}
                     </ul>
