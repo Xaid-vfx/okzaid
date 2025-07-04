@@ -4,10 +4,13 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const blogs = [
-    { slug: 'purpose-vs-absurdity', title: 'Purpose vs Absurdity', summary: 'Can you find purpose in absurdity?' },
-    { slug: 'poke-life', title: 'Poke Life', summary: 'Life can be much broader.' },
-    { slug: 'the-art-of-letting-go', title: 'The Art of Letting Go', summary: 'What exactly is life?' },
+    { slug: 'purpose-vs-absurdity', title: 'Purpose vs Absurdity', summary: 'Can you find purpose in absurdity?', date: '2025-06-20' },
+    { slug: 'poke-life', title: 'Poke Life', summary: 'Life can be much broader.', date: '2025-07-04' },
+    { slug: 'the-art-of-letting-go', title: 'The Art of Letting Go', summary: 'What exactly is life?', date: '2025-06-26' },
 ];
+
+// Sort blogs by date descending (most recent first)
+const sortedBlogs = blogs.slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export default function BlogsPage() {
     const [leaving, setLeaving] = useState(false);
@@ -24,7 +27,7 @@ export default function BlogsPage() {
                 >
                     <h1 className="text-xl sm:text-2xl font-bold mb-6 text-white font-mono">/blogs</h1>
                     <ul className="space-y-6">
-                        {blogs.map((blog, i) => (
+                        {sortedBlogs.map((blog, i) => (
                             <motion.li
                                 key={blog.slug}
                                 initial={{ opacity: 0 }}
