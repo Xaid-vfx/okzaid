@@ -7,6 +7,7 @@ const blogs = [
     { slug: 'purpose-vs-absurdity', title: 'Purpose vs Absurdity', summary: 'Can you find purpose in absurdity?', date: '2025-06-20' },
     { slug: 'poke-life', title: 'Poke Life', summary: 'Life can be much broader.', date: '2025-07-04' },
     { slug: 'the-art-of-letting-go', title: 'The Art of Letting Go', summary: 'What exactly is life?', date: '2025-06-26' },
+    { slug: 'rationality-vs-delusion', title: 'Rationality vs Delusion', summary: 'The ultimate mindfuck', date: '2025-07-19' },
 ];
 
 // Sort blogs by date descending (most recent first)
