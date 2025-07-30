@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -15,12 +14,9 @@ const blogs = [
 const sortedBlogs = blogs.slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export default function BlogsPage() {
-    const [leaving, setLeaving] = useState(false);
     const router = useRouter();
     return (
-        <AnimatePresence>
-            {!leaving && (
-                <motion.section
+        <motion.section
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -36,9 +32,8 @@ export default function BlogsPage() {
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.06 * i, duration: 0.28 }}
                                 className="bg-transparent p-0 cursor-pointer group text-left"
-                                onClick={async () => {
-                                    setLeaving(true);
-                                    setTimeout(() => router.push(`/blogs/${blog.slug}`), 400);
+                                onClick={() => {
+                                    router.push(`/blogs/${blog.slug}`);
                                 }}
                             >
                                 <span className="text-base sm:text-lg font-mono text-neutral-300 group-hover:text-emerald-400 group-hover:underline transition-colors">
@@ -50,8 +45,6 @@ export default function BlogsPage() {
                             </motion.li>
                         ))}
                     </ul>
-                </motion.section>
-            )}
-        </AnimatePresence>
+        </motion.section>
     );
 } 

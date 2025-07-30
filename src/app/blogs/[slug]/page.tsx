@@ -1,7 +1,7 @@
 // app/blog/[slug]/page.tsx
 
 'use client';
-import { useState, use } from 'react';
+import { use } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { notFound } from 'next/navigation';
@@ -273,7 +273,6 @@ It’s not a fixed formula. Everyone has to find their own rhythm. But once you 
 export default function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = use(params);
     const post = blogContent[slug as keyof typeof blogContent];
-    const [leaving, setLeaving] = useState(false);
     const router = useRouter();
 
     if (!post) {
@@ -281,9 +280,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
     }
 
     return (
-        <AnimatePresence>
-            {!leaving && (
-                <motion.section
+        <motion.section
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -293,9 +290,8 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
                     <div className="mb-6">
                         <span
                             className="group flex items-center gap-2 text-sm font-mono text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer"
-                            onClick={async () => {
-                                setLeaving(true);
-                                setTimeout(() => router.push('/blogs'), 400);
+                            onClick={() => {
+                                router.push('/blogs');
                             }}
                         >
                             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
@@ -327,8 +323,6 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
                             <span className="text-sm font-mono text-neutral-400">- Zaid</span>
                         )}
                     </footer>
-                </motion.section>
-            )}
-        </AnimatePresence>
+        </motion.section>
     );
 }
