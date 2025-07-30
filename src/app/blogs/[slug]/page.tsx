@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
-import Background from '../../../components/Background';
 import { ArrowLeft } from 'lucide-react'; 
 
 const blogContent = {
@@ -235,26 +234,30 @@ What if you've been asleep your whole life?`
         title: 'Zoom In or Zoom Out',
         date: '30 July, 2025',
         content:
-    `We all want a happy, relaxed, and prosperous life. Right? 
-But wait, what does that actually mean? 
-Do we want to be happy every single day or just happy overall?  Being happy every day is nearly impossible. Life throws things at us we can’t always control. So what we really want is a life that feels happy in the bigger picture.
+    `We all want a happy, relaxed, and prosperous life. Right?
+But wait, what does that actually mean?
+Do we want to be happy every single day or just happy overall? Being happy every day is nearly impossible. Life throws things at us we can’t always control. So what we really want is a life that feels happy in the bigger picture.
 
 Now, "overall happiness" is subjective, but let’s simplify: a generally happy person is someone who, on average, has more good days than bad ones.
 
 The happiest person in the world isn't someone who’s smiling every single day, it’s the one who has the most good days across a lifetime. (Sure, the intensity of happiness matters too, but let’s set that aside for now.)
 
-Let’s talk math. Say the average person lives about 70 years. We can probably skip the first 10, since those early years are more about developing awareness than truly understanding happiness. That leaves 60 years of emotional consciousness.
+Let’s talk math.
+Say the average person lives about 70 years. We can probably skip the first 10, since those early years are more about developing awareness than truly understanding happiness. That leaves 60 years of emotional consciousness.
 
 If you lived 40 of those years feeling generally good and 20 feeling not-so-good, you’ve lived a great life. That’s more than enough to conclude that you had a happy one overall.
 
 But wait,
- The point I want to make here is: it’s not about the 40 good years, it’s about the 20 bad ones.
+The point I want to make here is: it’s not about the 40 good years, it’s about the 20 bad ones.
 
-Too often, we look at life through a zoomed-in lens. Let me explain.
-Imagine you applied for your dream job. You were a perfect fit, confident you’d get it. And then you got rejected. In that moment, you'd feel devastated. Maybe hopeless. Like something major has gone wrong in your life. That’s the zoomed-in view talking. It makes it feel like this one day defines your entire life. Your brain thinks as if your life span is one day and you have already messed up the entire day. 
+Too often, we look at life through a zoomed-in lens. Let me explain.
+Imagine you applied for your dream job. You were a perfect fit, confident you’d get it. And then you got rejected. In that moment, you'd feel devastated. Maybe hopeless. Like something major has gone wrong in your life. That’s the zoomed-in view talking. It makes it feel like this one day defines your entire life. Your brain thinks as if your life span is one day and you have already messed up the entire day.
+
 Now imagine something different. You're on your deathbed, reflecting on your life as a whole. Would this rejection even make the list of things worth remembering?
+
 Probably not. Why? Because at that moment, you’re seeing life through a zoomed-out lens, where only the major arcs and overall themes matter. That’s the power of zooming out. It can blur even the moments that once made you feel like giving up. If someone could learn to zoom out in their day-to-day life, they'd become incredibly emotionally resilient. Because zooming out turns what feels like a catastrophe today into a mere footnote tomorrow.
- If you master this, the art of zooming out, success will likely follow. Not because you chase it but because setbacks won’t throw you off course anymore.
+
+If you master this, the art of zooming out, success will likely follow. Not because you chase it but because setbacks won’t throw you off course anymore.
 
 But here’s the twist.
 Zooming out might make you successful but will it make you happy?
@@ -262,7 +265,8 @@ In the long term, yes. But in the day to day? Not always.
 Zooming out too often can leave you detached from the present. Your only sources of joy might become hope or nostalgia, not the moment you’re in. That’s where zooming in comes in. It helps you savor the now, to enjoy a moment as if there's no tomorrow. That’s real, immediate happiness.
 
 So should you zoom in or zoom out?
-The answer: learn when to rotate the lens. 
+The answer: learn when to rotate the lens.
+
 It’s not a fixed formula. Everyone has to find their own rhythm. But once you do once you master the art of switching perspectives, it’ll change your life in the most profound way.`}
 };
 
@@ -278,55 +282,51 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     return (
         <AnimatePresence>
             {!leaving && (
-                <motion.main
+                <motion.section
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.28 }}
-                    className="relative min-h-screen bg-gray-900/80 font-sans"
+                    className="max-w-2xl mx-auto py-6 sm:py-12 px-2 sm:px-4"
                 >
-                    <Background />
-                    <div className="mx-auto max-w-3xl px-2 sm:px-4 lg:px-8 py-8 sm:py-16 md:py-24">
-                        <div className="mb-8">
-                            <span
-                                className="group flex items-center gap-2 text-sm font-medium text-gray-300 hover:text-white transition-colors cursor-pointer"
-                                onClick={async () => {
-                                    setLeaving(true);
-                                    setTimeout(() => router.push('/blogs'), 400);
-                                }}
-                            >
-                                <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                                Back to Blog
-                            </span>
-                        </div>
-                        <div className="rounded-2xl bg-gray-900/70 p-3 sm:p-6 md:p-10 backdrop-blur-lg border border-white/5 shadow-2xl shadow-black/20">
-                            <header className="text-center mb-12">
-                                <h1 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-white tracking-tight text-shadow-lg shadow-black/20">
-                                    {post.title}
-                                </h1>
-                                <time dateTime={post.date} className="mt-4 block text-xs sm:text-sm text-gray-400">
-                                    {post.date}
-                                </time>
-                            </header>
-                            <article className="prose prose-invert max-w-none whitespace-pre-line">
-                                <ReactMarkdown
-                                    components={{
-                                        p: (props) => <p className="font-serif text-base sm:text-lg md:text-xl leading-loose mb-6">{props.children}</p>
-                                    }}
-                                >{post.content}</ReactMarkdown>
-                            </article>
-                            <footer className="mt-12 pt-8 border-t border-white/10 text-center">
-                                <div className="flex flex-col gap-2">
-                                    {params.slug === 'poke-life' ? (
-                                        <span className="font-semibold text-white text-base text-left">- Jobs</span>
-                                    ) : (
-                                        <span className="font-semibold text-white text-base text-left">- Zaid</span>
-                                    )}
-                                </div>
-                            </footer>
-                        </div>
+                    <div className="mb-6">
+                        <span
+                            className="group flex items-center gap-2 text-sm font-mono text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer"
+                            onClick={async () => {
+                                setLeaving(true);
+                                setTimeout(() => router.push('/blogs'), 400);
+                            }}
+                        >
+                            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                            /blogs
+                        </span>
                     </div>
-                </motion.main>
+                    
+                    <header className="mb-8">
+                        <h1 className="text-xl sm:text-2xl font-bold mb-2 text-neutral-200 font-mono">
+                            {post.title}
+                        </h1>
+                        <time dateTime={post.date} className="text-xs sm:text-sm text-neutral-400 font-mono">
+                            {post.date}
+                        </time>
+                    </header>
+                    
+                    <article className="mb-8">
+                        <ReactMarkdown
+                            components={{
+                                p: (props) => <p className="font-mono text-sm sm:text-base text-neutral-300 leading-relaxed mb-4 whitespace-pre-line">{props.children}</p>
+                            }}
+                        >{post.content}</ReactMarkdown>
+                    </article>
+                    
+                    <footer className="pt-4 border-t border-neutral-700">
+                        {params.slug === 'poke-life' ? (
+                            <span className="text-sm font-mono text-neutral-400">- Jobs</span>
+                        ) : (
+                            <span className="text-sm font-mono text-neutral-400">- Zaid</span>
+                        )}
+                    </footer>
+                </motion.section>
             )}
         </AnimatePresence>
     );

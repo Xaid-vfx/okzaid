@@ -27,7 +27,7 @@ export default function BlogsPage() {
                     transition={{ duration: 0.28 }}
                     className="max-w-2xl mx-auto py-6 sm:py-12 px-2 sm:px-4"
                 >
-                    <h1 className="text-xl sm:text-2xl font-bold mb-6 text-white font-mono">/blogs</h1>
+                    <h1 className="text-xl sm:text-2xl font-bold mb-6 text-neutral-200 font-mono">/blogs</h1>
                     <ul className="space-y-6">
                         {sortedBlogs.map((blog, i) => (
                             <motion.li
@@ -41,7 +41,7 @@ export default function BlogsPage() {
                                     setTimeout(() => router.push(`/blogs/${blog.slug}`), 400);
                                 }}
                             >
-                                <span className="text-base sm:text-lg font-mono text-neutral-100 group-hover:text-emerald-400 group-hover:underline transition-colors">
+                                <span className="text-base sm:text-lg font-mono text-neutral-300 group-hover:text-emerald-400 group-hover:underline transition-colors">
                                     {blog.title}
                                 </span>
                                 <p className="text-neutral-400 text-xs sm:text-sm mt-1 font-mono">
