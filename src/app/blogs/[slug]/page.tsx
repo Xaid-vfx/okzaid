@@ -1,7 +1,7 @@
 // app/blog/[slug]/page.tsx
 
 'use client';
-import { useState } from 'react';
+import { useState, use } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { notFound } from 'next/navigation';
@@ -270,8 +270,9 @@ The answer: learn when to rotate the lens.
 It’s not a fixed formula. Everyone has to find their own rhythm. But once you do once you master the art of switching perspectives, it’ll change your life in the most profound way.`}
 };
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-    const post = blogContent[params.slug as keyof typeof blogContent];
+export default function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = use(params);
+    const post = blogContent[slug as keyof typeof blogContent];
     const [leaving, setLeaving] = useState(false);
     const router = useRouter();
 
@@ -320,7 +321,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                     </article>
                     
                     <footer className="pt-4 border-t border-neutral-700">
-                        {params.slug === 'poke-life' ? (
+                        {slug === 'poke-life' ? (
                             <span className="text-sm font-mono text-neutral-400">- Jobs</span>
                         ) : (
                             <span className="text-sm font-mono text-neutral-400">- Zaid</span>
