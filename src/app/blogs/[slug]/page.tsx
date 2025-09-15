@@ -3,12 +3,33 @@
 'use client';
 import { use } from 'react';
 import { useRouter } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
-import { ArrowLeft } from 'lucide-react'; 
+import { ArrowLeft } from 'lucide-react';
 
 const blogContent = {
+    'invisible-currency': {
+        title: 'The Invisible Currency',
+        date: '15 September, 2025',
+        content: `The Invisible Currency We Spend Every Day.
+Every decision you make comes with a price tag.
+You don’t pay with money, you pay with possibilities.
+If you pick one thing, you quietly kill a million others.
+That’s what a tradeoff is.
+
+Most people think tradeoffs only happen during the “big” moments like quitting a job, choosing a career, ending a relationship.
+But tradeoffs are much more deeply embedded in daily life than we think. Every second of your life is a tradeoff.
+
+When you wake up in the morning, you’re making one. You could stay curled up under the blanket or you could drag yourself out of bed and into the world. You can’t do both. Your brain silently weighs the value of sleep versus the value of what’s waiting for you and pushes your body one way. When you’re scrolling through social media, you’re unintentionally trading your time and attention for dopamine hits. Even now, as you read this, you’re making a tradeoff. You’re giving your attention, something fragile and finite, in exchange for the hope of meaning in these words. We like to believe we can have it all. That we can make choices without consequences. But it doesn’t work like that. Every “yes” you say to something is a silent “no” to something else.
+
+At any given second, your future isn’t just one straight line, it’s a cloud of infinite possibilities hovering around you. Imagine you’re standing still and from your body stretch out infinite invisible threads in every direction. Each thread represents a possible future version of you. Some threads could lead to extraordinary things like joy, success, love, fulfilment. Others might lead to regret, chaos and loss. Most lead somewhere in between. The moment you make a choice even something as small as picking up your phone or starting a conversation you grab one thread. And the instant you do, all the other threads fall away. That choice becomes your new present. From that new present, a fresh cloud of infinite threads emerges again. And once again, you choose. This happens not just every hour or every day but every split second of your life.
+
+This is why no single tradeoff can ever fully define you. Because even if you pick the “wrong” thread and it leads somewhere painful, the next moment brings you a brand new set of infinite threads to choose from. You can always redeem what you lost. You can always rebuild what you broke. Because the possibilities never stop coming. And the same works the other way, too. Even if you’ve chosen brilliantly until now, one careless decision could send you spiralling down another path entirely. That’s the terrifying beauty of it. And also the hope in it.
+
+Every second, the universe hands you infinite futures.
+And who you become depends on which thread you reach for next.`
+    },
     'the-art-of-letting-go': {
         title: 'The Art of Letting Go',
         date: 'June 26, 2025',
@@ -230,11 +251,11 @@ Perhaps "delusion" is not a flaw, but a superpower. What if the only way to trul
 Because in the end, reality itself is just a dream. And it might be time to wake up.
 What if you've been asleep your whole life?`
     },
-'zoomin-or-zoomout': {
+    'zoomin-or-zoomout': {
         title: 'Zoom In or Zoom Out',
         date: '30 July, 2025',
         content:
-    `We all want a happy, relaxed, and prosperous life. Right?
+            `We all want a happy, relaxed, and prosperous life. Right?
 But wait, what does that actually mean?
 Do we want to be happy every single day or just happy overall? Being happy every day is nearly impossible. Life throws things at us we can’t always control. So what we really want is a life that feels happy in the bigger picture.
 
@@ -255,7 +276,7 @@ Imagine you applied for your dream job. You were a perfect fit, confident you’
 
 Now imagine something different. You're on your deathbed, reflecting on your life as a whole. Would this rejection even make the list of things worth remembering?
 
-Probably not. Why? Because at that moment, you’re seeing life through a zoomed-out lens, where only the major arcs and overall themes matter. That’s the power of zooming out. It can blur even the moments that once made you feel like giving up. If someone could learn to zoom out in their day-to-day life, they'd become incredibly emotionally resilient. Because zooming out turns what feels like a catastrophe today into a mere footnote tomorrow.
+Probably not. Why? Because at that moment, you’re seeing life through a zoomed-out lens, where only the major arcs and overall themes matter. That’s the power of zooming out. It can blur even the moments that once made you feel like giving up.If someone could learn to zoom out in their day-to-day life, they'd become incredibly emotionally resilient. Because zooming out turns what feels like a catastrophe today into a mere footnote tomorrow.
 
 If you master this, the art of zooming out, success will likely follow. Not because you chase it but because setbacks won’t throw you off course anymore.
 
@@ -281,48 +302,54 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
 
     return (
         <motion.section
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.28 }}
-                    className="max-w-2xl mx-auto py-6 sm:py-12 px-2 sm:px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.28 }}
+            className="max-w-2xl mx-auto py-6 sm:py-12 px-2 sm:px-4"
+        >
+            <div className="mb-6">
+                <span
+                    className="group flex items-center gap-2 text-sm font-mono text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer"
+                    onClick={() => {
+                        router.push('/blogs');
+                    }}
                 >
-                    <div className="mb-6">
-                        <span
-                            className="group flex items-center gap-2 text-sm font-mono text-neutral-400 hover:text-emerald-400 transition-colors cursor-pointer"
-                            onClick={() => {
-                                router.push('/blogs');
-                            }}
-                        >
-                            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                            /blogs
-                        </span>
-                    </div>
-                    
-                    <header className="mb-8">
-                        <h1 className="text-xl sm:text-2xl font-bold mb-2 text-neutral-200 font-mono">
-                            {post.title}
-                        </h1>
-                        <time dateTime={post.date} className="text-xs sm:text-sm text-neutral-400 font-mono">
-                            {post.date}
-                        </time>
-                    </header>
-                    
-                    <article className="mb-8">
-                        <ReactMarkdown
-                            components={{
-                                p: (props) => <p className="font-mono text-sm sm:text-base text-neutral-300 leading-relaxed mb-4 whitespace-pre-line">{props.children}</p>
-                            }}
-                        >{post.content}</ReactMarkdown>
-                    </article>
-                    
-                    <footer className="pt-4 border-t border-neutral-700">
-                        {slug === 'poke-life' ? (
-                            <span className="text-sm font-mono text-neutral-400">- Jobs</span>
-                        ) : (
-                            <span className="text-sm font-mono text-neutral-400">- Zaid</span>
-                        )}
-                    </footer>
+                    <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                    /blogs
+                </span>
+            </div>
+
+            <header className="mb-8">
+                <h1 className="text-xl sm:text-2xl font-bold mb-2 text-neutral-200 font-mono">
+                    {post.title}
+                </h1>
+                <time dateTime={post.date} className="text-xs sm:text-sm text-neutral-400 font-mono">
+                    {post.date}
+                </time>
+            </header>
+
+            <article className="mb-8">
+                <ReactMarkdown
+                    components={{
+                        p: (props) => (
+                            <p className="font-mono text-sm sm:text-base text-neutral-300 leading-relaxed mb-4 whitespace-pre-line">
+                                {props.children}
+                            </p>
+                        ),
+                    }}
+                >
+                    {post.content}
+                </ReactMarkdown>
+            </article>
+
+            <footer className="pt-4 border-t border-neutral-700">
+                {slug === 'poke-life' ? (
+                    <span className="text-sm font-mono text-neutral-400">- Jobs</span>
+                ) : (
+                    <span className="text-sm font-mono text-neutral-400">- Zaid</span>
+                )}
+            </footer>
         </motion.section>
     );
 }
